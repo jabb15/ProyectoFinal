@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telefonía</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Telefonía</h1>
+        <!-- Menú de opciones -->
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="accesorios.html">Accesorios</a></li>
+                <li><a href="computo.html">Equipos de Cómputo</a></li>
+                <li><a href="tablets.html">Tablets</a></li>
+                <li><a href="telefonia.html">Telefonía</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="ofertas">
+        <div class="product-container">
+            <!-- Producto 1 -->
+            <div class="product-card">
+                <img src="img/iphone14.jpeg" alt="Producto 1">
+                <div class="product-info">
+                    <h3>iPhone 14 Pro Max</h3>
+                    <p>256GB</p>
+                    <p>iOS 16</p>
+                    <p>Pantalla 6.7</p>
+                    <div class="product-price">$22,599.00</div>
+                </div>
+                <div class="product-buttons">
+                    <button class="cart-btn" onclick="addToCart('iPhone 14 Pro Max', 22599.00)">Agregar al Carrito</button>
+                    <button class="buy-btn" onclick="payForProduct('iPhone 14 Pro Max', 22599.00)">Comprar</button>
+                </div>
+            </div>
+    
+            <!-- Producto 2 -->
+            <div class="product-card">
+                <img src="img/sgs22.jpg" alt="Producto 2">
+                <div class="product-info">
+                    <h3>Samsung Galaxy S23</h3>
+                    <p>512GB</p>
+                    <p>Android 13</p>
+                    <p>Pantalla 6.8</p>
+                    <div class="product-price">$32,999.00</div>
+                </div>
+                <div class="product-buttons">
+                    <button class="cart-btn" onclick="addToCart('Samsung Galaxy S23', 32999.00)">Agregar al Carrito</button>
+                    <button class="buy-btn" onclick="payForProduct('Samsung Galaxy S23', 32999.00)">Comprar</button>
+                </div>
+            </div>
+    
+            <!-- Producto 3 -->
+            <div class="product-card">
+                <img src="img/or12.jpg" alt="Producto 3">
+                <div class="product-info">
+                    <h3>Oppo Reno 12</h3>
+                    <p>512GB</p>
+                    <p>Android 13 (U)</p>
+                    <p>Pantalla 6.7</p>
+                    <div class="product-price">$12,699.00</div>
+                </div>
+                <div class="product-buttons">
+                    <button class="cart-btn" onclick="addToCart('Oppo Reno 12', 12699.00)">Agregar al Carrito</button>
+                    <button class="buy-btn" onclick="payForProduct('Oppo Reno 12', 12699.00)">Comprar</button>
+                </div>
+            </div>
+    
+            <!-- Producto 4 -->
+            <div class="product-card">
+                <img src="img/hp50.png" alt="Producto 4">
+                <div class="product-info">
+                    <h3>Huawei P50</h3>
+                    <p>256GB</p>
+                    <p>EMUI 12.0.1</p>
+                    <p>Pantalla 6.5</p>
+                    <div class="product-price">$16,599.00</div>
+                </div>
+                <div class="product-buttons">
+                    <button class="cart-btn" onclick="addToCart('Huawei P50', 16599.00)">Agregar al Carrito</button>
+                    <button class="buy-btn" onclick="payForProduct('Huawei P50', 16599.00)">Comprar</button>
+                </div>
+            </div>
+    
+            <!-- Producto 5 -->
+            <div class="product-card">
+                <img src="img/x12p.png" alt="Producto 5">
+                <div class="product-info">
+                    <h3>Xiaomi 12 Pro</h3>
+                    <p>256GB</p>
+                    <p>12 SKQ1.211006.001</p>
+                    <p>Pantalla 6.7</p>
+                    <div class="product-price">$16,799.00</div>
+                </div>
+                <div class="product-buttons">
+                    <button class="cart-btn" onclick="addToCart('Xiaomi 12 Pro', 16799.00)">Agregar al Carrito</button>
+                    <button class="buy-btn" onclick="payForProduct('Xiaomi 12 Pro', 16799.00)">Comprar</button>
+                </div>
+            </div>
+    
+            <!-- Producto 6 -->
+            <div class="product-card">
+                <img src="img/me20p.png" alt="Producto 6">
+                <div class="product-info">
+                    <h3>Motorola Edge 30 Pro</h3>
+                    <p>512GB</p>
+                    <p>Android 12.0 (S)</p>
+                    <p>Pantalla 6.7</p>
+                    <div class="product-price">$18,999.00</div>
+                </div>
+                <div class="product-buttons">
+                    <button class="cart-btn" onclick="addToCart('Motorola Edge 30 Pro', 18999.00)">Agregar al Carrito</button>
+                    <button class="buy-btn" onclick="payForProduct('Motorola Edge 30 Pro', 18999.00)">Comprar</button>
+                </div>
+            </div>
+        </div>
+        <button id="ver-carrito-btn" onclick="openModal()">Ver Carrito</button> 
+    </section> 
+
+<!-- Ventana Modal del Carrito -->
+<div id="cart-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeCartModal()">&times;</span>
+      <h2>Carrito</h2>
+      <div id="cart-items"></div> <!-- Aquí se mostrarán los productos del carrito -->
+      <span id="cart-total"></span>
+      
+      <!-- Formulario de Datos del Cliente -->
+      <h3>Información del Cliente</h3>
+      <form id="cart-customer-info-form">
+        <label for="name">Nombre Completo:</label>
+        <input type="text" id="cart-name" name="name" required>
+        <br>
+        <br>
+  
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="cart-email" name="email" required>
+        <br>
+        <br>
+  
+        <label for="address">Dirección:</label>
+        <input type="text" id="cart-address" name="address" required>
+        <br>
+        <br>
+  
+        <label for="phone">Teléfono:</label>
+        <input type="tel" id="cart-phone" name="phone" required>
+        <br>
+        <br>
+  
+        <button type="button" onclick="submitCartCustomerInfo()">Confirmar Compra</button>
+      </form>
+    </div>
+  </div>
+
+ <!-- Ventana Modal de Pago -->
+<div id="payment-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closePaymentModal()">&times;</span>
+      <h2>Pago</h2>
+      <p id="payment-product-name"></p>
+      <p id="payment-product-price"></p>
+  
+      <!-- Formulario de Datos del Cliente -->
+      <h3>Información del Cliente</h3>
+      <form id="payment-customer-info-form">
+        <label for="name">Nombre Completo:</label>
+        <input type="text" id="payment-name" name="name" required>
+        <br>
+        <br>
+  
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="payment-email" name="email" required>
+        <br>
+        <br>
+  
+        <label for="address">Dirección:</label>
+        <input type="text" id="payment-address" name="address" required>
+        <br>
+        <br>
+  
+        <label for="phone">Teléfono:</label>
+        <input type="tel" id="payment-phone" name="phone" required>
+        <br>
+        <br>
+  
+        <button type="button" onclick="submitPaymentCustomerInfo()">Confirmar Compra</button>
+      </form>
+    </div>
+  </div>
+  
+  <script src="carrito.js"></script>
+
+</body>
+</html>

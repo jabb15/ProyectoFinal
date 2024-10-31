@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipos de Cómputo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Equipos de Cómputo</h1>
+        <!-- Menú de opciones -->
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="accesorios.html">Accesorios</a></li>
+                <li><a href="computo.html">Equipos de Cómputo</a></li>
+                <li><a href="tablets.html">Tablets</a></li>
+                <li><a href="telefonia.html">Telefonía</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="ofertas">
+        <div class="product-container">
+            <!-- Producto 1 -->
+            <div class="product-card">
+                <img src="img/macbookp.jpg" alt="Producto 1">
+                <div class="product-info">
+                    <h3>MacBook Pro</h3>
+                    <p>macOs</p>
+                    <p>Chip M3 Pro de Apple</p>
+                    <p>512GB</p>
+                    <div class="product-price">$30,500.00</div>
+                </div>
+                <div class="product-buttons">
+                    <button class="cart-btn" onclick="addToCart('MacBook Pro', 30500.00)">Agregar al Carrito</button>
+                    <button class="buy-btn" onclick="payForProduct('MacBook Pro', 30500.00)">Comprar</button>
+                </div>
+            </div>
+    
+            <!-- Producto 2 -->
+            <div class="product-card">
+                <img src="img/macbook.jpeg" alt="Producto 2">
+                <div class="product-info">
+                    <h3>MacBook Air</h3>
+                    <p>macOS Big Sur</p>
+                    <p>Chip M1 de Apple</p>
+                    <p>256GB</p>
+                    <div class="product-price">$21,299.00</div>
+                </div>
+                <div class="product-buttons">
+                    <button class="cart-btn" onclick="addToCart('MacBook Air', 21299.00)">Agregar al Carrito</button>
+                    <button class="buy-btn" onclick="payForProduct('MacBook Air', 21299.00)">Comprar</button>
+                </div>
+            </div>
+    
+            <!-- Producto 3 -->
+            <div class="product-card">
+                <img src="img/hppg9.jpg" alt="Producto 3">
+                <div class="product-info">
+                    <h3>Laptop HP 250 G9</h3>
+                    <p>Windows 11 Pro</p>
+                    <p>Core i7</p>
+                    <p>256GB</p>
+                    <div class="product-price">$17,599.00</div>
+                </div>
+                <div class="product-buttons">
+                    <button class="cart-btn" onclick="addToCart('Laptop HP 250 G9', 17599.00)">Agregar al Carrito</button>
+                    <button class="buy-btn" onclick="payForProduct('Laptop HP 250 G9', 17599.00)">Comprar</button>
+                </div>
+            </div>
+    
+            <!-- Producto 4 -->
+            <div class="product-card">
+                <img src="img/hpp.jpg" alt="Producto 4">
+                <div class="product-info">
+                    <h3>Laptop HP Pavilion</h3>
+                    <p>Windows 11 Home</p>
+                    <p>Core i5</p>
+                    <p>512GB</p>
+                    <div class="product-price">$14,999.00</div>
+                </div>
+                <div class="product-buttons">
+                    <button class="cart-btn" onclick="addToCart('Laptop HP Pavilion', 14999.00)">Agregar al Carrito</button>
+                    <button class="buy-btn" onclick="payForProduct('Laptop HP Pavilion', 14999.00)">Comprar</button>
+                </div>
+            </div>
+    
+            <!-- Producto 5 -->
+            <div class="product-card">
+                <img src="img/lenovoip.jpg" alt="Producto 5">
+                <div class="product-info">
+                    <h3>Laptop Lenovo IdeaPad 3</h3>
+                    <p>Windows 11 Home</p>
+                    <p>AMD Ryzen 5 7430U</p>
+                    <p>512GB</p>
+                    <div class="product-price">$13,499.00</div>
+                </div>
+                <div class="product-buttons">
+                    <button class="cart-btn" onclick="addToCart('Laptop Lenovo IdeaPad 3', 13499.00)">Agregar al Carrito</button>
+                    <button class="buy-btn" onclick="payForProduct('Laptop Lenovo IdeaPad 3', 13499.00)">Comprar</button>
+                </div>
+            </div>
+    
+            <!-- Producto 6 -->
+            <div class="product-card">
+                <img src="img/lenovoy.jpg" alt="Producto 6">
+                <div class="product-info">
+                    <h3>Laptop Lenovo Yoga Slim 6</h3>
+                    <p>Windows 11 Home</p>
+                    <p>Core i5</p>
+                    <p>512GB</p>
+                    <div class="product-price">$17,459.00</div>
+                </div>
+                <div class="product-buttons">
+                    <button class="cart-btn" onclick="addToCart('Laptop Lenovo Yoga Slim 6', 17459.00)">Agregar al Carrito</button>
+                    <button class="buy-btn" onclick="payForProduct('Laptop Lenovo Yoga Slim 6', 17459.00)">Comprar</button>
+                </div>
+            </div>
+
+            <!-- Producto 7 -->
+            <div class="product-card">
+                <img src="img/omen.jpg" alt="Producto 7">
+                <div class="product-info">
+                    <h3>Omen 17 Gamer VR</h3>
+                    <p>Windows 11 Home</p>
+                    <p>Core i7</p>
+                    <p>1TB</p>
+                    <div class="product-price">$55,750.00</div>
+                </div>
+                <div class="product-buttons">
+                    <button class="cart-btn" onclick="addToCart('Omen 17 Gamer VR', 55750.00)">Agregar al Carrito</button>
+                    <button class="buy-btn" onclick="payForProduct('Omen 17 Gamer VR', 55750.00)">Comprar</button>
+                </div>
+            </div>
+
+            <!-- Producto 8 -->
+            <div class="product-card">
+                <img src="img/pcgamer.jpg" alt="Producto 8">
+                <div class="product-info">
+                    <h3>Xtreme PC Gaming</h3>
+                    <p>Windows 11 Home</p>
+                    <p>AMD Ryzen 5</p>
+                    <p>3TB</p>
+                    <div class="product-price">$45,650.00</div>
+                </div>
+                <div class="product-buttons">
+                    <button class="cart-btn" onclick="addToCart('Xtreme PC Gaming', 45650.00)">Agregar al Carrito</button>
+                    <button class="buy-btn" onclick="payForProduct('Xtreme PC Gaming', 45650.00)">Comprar</button>
+                </div>
+            </div>
+        </div>
+        <button id="ver-carrito-btn" onclick="openModal()">Ver Carrito</button> 
+    </section> 
+
+    <!-- Ventana Modal del Carrito -->
+<div id="cart-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeCartModal()">&times;</span>
+      <h2>Carrito</h2>
+      <div id="cart-items"></div> <!-- Aquí se mostrarán los productos del carrito -->
+      <span id="cart-total"></span>
+      
+      <!-- Formulario de Datos del Cliente -->
+      <h3>Información del Cliente</h3>
+      <form id="cart-customer-info-form">
+        <label for="name">Nombre Completo:</label>
+        <input type="text" id="cart-name" name="name" required>
+        <br>
+        <br>
+  
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="cart-email" name="email" required>
+        <br>
+        <br>
+  
+        <label for="address">Dirección:</label>
+        <input type="text" id="cart-address" name="address" required>
+        <br>
+        <br>
+  
+        <label for="phone">Teléfono:</label>
+        <input type="tel" id="cart-phone" name="phone" required>
+        <br>
+        <br>
+  
+        <button type="button" onclick="submitCartCustomerInfo()">Confirmar Compra</button>
+      </form>
+    </div>
+  </div>  
+
+    <!-- Ventana Modal de Pago -->
+<div id="payment-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closePaymentModal()">&times;</span>
+      <h2>Pago</h2>
+      <p id="payment-product-name"></p>
+      <p id="payment-product-price"></p>
+  
+      <!-- Formulario de Datos del Cliente -->
+      <h3>Información del Cliente</h3>
+      <form id="payment-customer-info-form">
+        <label for="name">Nombre Completo:</label>
+        <input type="text" id="payment-name" name="name" required>
+        <br>
+        <br>
+  
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="payment-email" name="email" required>
+        <br>
+        <br>
+  
+        <label for="address">Dirección:</label>
+        <input type="text" id="payment-address" name="address" required>
+        <br>
+        <br>
+  
+        <label for="phone">Teléfono:</label>
+        <input type="tel" id="payment-phone" name="phone" required>
+        <br>
+        <br>
+  
+        <button type="button" onclick="submitPaymentCustomerInfo()">Confirmar Compra</button>
+      </form>
+    </div>
+  </div>  
+  
+  <script src="carrito.js"></script>
+
+</body>
+</html>

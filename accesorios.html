@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Accesorios</title>
+    <link rel="stylesheet" href="style.css"/>
+  </head>
+  <body>
+    <header>
+      <h1>Accesorios</h1>
+      <!-- Menú de opciones -->
+      <nav>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="accesorios.html">Accesorios</a></li>
+          <li><a href="computo.html">Equipos de Cómputo</a></li>
+          <li><a href="tablets.html">Tablets</a></li>
+          <li><a href="telefonia.html">Telefonía</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="ofertas">
+      <div class="product-container">
+        <!-- Producto 1 -->
+        <div class="product-card">
+          <img src="img/airpods.png" alt="Producto 1" />
+          <div class="product-info">
+            <h3>Airpods Pro</h3>
+            <div class="product-price">$5,299.00</div>
+          </div>
+          <div class="product-buttons">
+            <button class="cart-btn" onclick="addToCart('Airpods Pro', 5299.00)">Agregar al Carrito</button>
+            <button class="buy-btn" onclick="payForProduct('Airpods Pro', 5299.00)">Comprar</button>
+          </div>
+        </div>
+
+        <!-- Producto 2 -->
+        <div class="product-card">
+          <img src="img/budspro.jpeg" alt="Producto 2" />
+          <div class="product-info">
+            <h3>Samsung Buds3 Pro</h3>
+            <p>Blanco</p>
+            <p>Grafito/Negro</p>
+            <div class="product-price">$3,299.00</div>
+          </div>
+          <div class="product-buttons">
+            <button class="cart-btn" onclick="addToCart('Samsung Buds3 Pro', 3299.00)">Agregar al Carrito</button>
+            <button class="buy-btn" onclick="payForProduct('Samsung Buds3 Pro', 3299.00)">Comprar</button>
+          </div>
+        </div>
+
+        <!-- Producto 3 -->
+        <div class="product-card">
+          <img src="img/kit.jpg" alt="Producto 3" />
+          <div class="product-info">
+            <h3>Teclado Inalámbrico</h3>
+            <p>Recargable</p>
+            <p>Larga duración</p>
+            <p>Incluye mouse</p>
+            <div class="product-price">$2,150.00</div>
+          </div>
+          <div class="product-buttons">
+            <button class="cart-btn" onclick="addToCart('Teclado Inalámbrico', 2150.00)">Agregar al Carrito</button>
+            <button class="buy-btn" onclick="payForProduct('Teclado Inalámbrico', 2150.00)">Comprar</button>
+          </div>
+        </div>
+
+        <!-- Producto 4 -->
+        <div class="product-card">
+          <img src="img/pencil.jpg" alt="Producto 4" />
+          <div class="product-info">
+            <h3>Lápiz Óptico</h3>
+            <p>Blanco</p>
+            <p>Z-NUOJIA</p>
+            <div class="product-price">$1,399.00</div>
+          </div>
+          <div class="product-buttons">
+            <button class="cart-btn" onclick="addToCart('Lápiz Óptico', 1399.00)">Agregar al Carrito</button>
+            <button class="buy-btn" onclick="payForProduct('Lápiz Óptico', 1399.00)">Comprar</button>
+          </div>
+        </div>
+      </div>
+      <button id="ver-carrito-btn" onclick="openModal()">Ver Carrito</button>
+    </section>
+
+    <!-- Ventana Modal del Carrito -->
+<div id="cart-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeCartModal()">&times;</span>
+    <h2>Carrito</h2>
+    <div id="cart-items"></div> <!-- Aquí se mostrarán los productos del carrito -->
+    <span id="cart-total"></span>
+    
+    <!-- Formulario de Datos del Cliente -->
+    <h3>Información del Cliente</h3>
+    <form id="cart-customer-info-form">
+      <label for="name">Nombre Completo:</label>
+      <input type="text" id="cart-name" name="name" required>
+      <br>
+      <br>
+
+      <label for="email">Correo Electrónico:</label>
+      <input type="email" id="cart-email" name="email" required>
+      <br>
+      <br>
+
+      <label for="address">Dirección:</label>
+      <input type="text" id="cart-address" name="address" required>
+      <br>
+      <br>
+
+      <label for="phone">Teléfono:</label>
+      <input type="tel" id="cart-phone" name="phone" required>
+      <br>
+      <br>
+
+      <button type="button" onclick="submitCartCustomerInfo()">Confirmar Compra</button>
+    </form>
+  </div>
+</div>
+
+    <!-- Ventana Modal de Pago -->
+<div id="payment-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closePaymentModal()">&times;</span>
+    <h2>Pago</h2>
+    <p id="payment-product-name"></p>
+    <p id="payment-product-price"></p>
+
+    <!-- Formulario de Datos del Cliente -->
+    <h3>Información del Cliente</h3>
+    <form id="payment-customer-info-form">
+      <label for="name">Nombre Completo:</label>
+      <input type="text" id="payment-name" name="name" required>
+      <br>
+      <br>
+
+      <label for="email">Correo Electrónico:</label>
+      <input type="email" id="payment-email" name="email" required>
+      <br>
+      <br>
+
+      <label for="address">Dirección:</label>
+      <input type="text" id="payment-address" name="address" required>
+      <br>
+      <br>
+
+      <label for="phone">Teléfono:</label>
+      <input type="tel" id="payment-phone" name="phone" required>
+      <br>
+      <br>
+
+      <button type="button" onclick="submitPaymentCustomerInfo()">Confirmar Compra</button>
+    </form>
+  </div>
+</div>
+
+<script src="carrito.js"></script>
+
+</body>
+</html>
