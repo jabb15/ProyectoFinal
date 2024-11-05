@@ -17,6 +17,7 @@
                 <li><a href="computo.html">Equipos de Cómputo</a></li>
                 <li><a href="tablets.html">Tablets</a></li>
                 <li><a href="telefonia.html">Telefonía</a></li>
+                <li><button id="ver-carrito-btn" onclick="openModal()">Carrito de Compras</button></li>
             </ul>
         </nav>
     </header>
@@ -151,7 +152,6 @@
                 </div>
             </div>
         </div>
-        <button id="ver-carrito-btn" onclick="openModal()">Ver Carrito</button> 
     </section> 
 
     <!-- Ventana Modal del Carrito -->
@@ -181,7 +181,7 @@
         <br>
   
         <label for="phone">Número de Tarjeta:</label>
-        <input type="text" id="cart-tarjet" name="tarjet" required>
+        <input type="tel" id="cart-tarjet" name="tarjet" required>
         <br>
         <br>
   
@@ -217,7 +217,7 @@
         <br>
   
         <label for="phone">Número de Tarjeta:</label>
-        <input type="text" id="payment-tarjet" name="tarjet" required>
+        <input type="tel" id="payment-tarjet" name="tarjet" required>
         <br>
         <br>
   
