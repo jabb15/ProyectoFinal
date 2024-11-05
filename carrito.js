@@ -13,7 +13,7 @@ function addToCart(productName, productPrice) {
     updateCartDisplay(); // Actualizar el carrito cuando se agrega un producto
 }
 
-// Función para actualizar el contenido del carrito en la ventana modal
+// Modifica la función updateCartDisplay para limpiar el total
 function updateCartDisplay() {
     const cartItemsContainer = document.getElementById('cart-items');
     const cartTotalElement = document.getElementById('cart-total');
@@ -38,7 +38,7 @@ function updateCartDisplay() {
 
     // Si no hay productos, establecer el total a $0.00
     if (cart.length === 0) {
-        cartTotalElement.innerText = 'Total a pagar (incluido IVA): $0.00';
+        cartTotalElement.innerText = 'Total (incluido IVA): $0.00';
         return; // Salir si el carrito está vacío
     }
 
@@ -47,7 +47,7 @@ function updateCartDisplay() {
     const totalWithIVA = totalPrice * (1 + IVA_RATE);
     
     // Agregar salto de línea antes del total
-    cartTotalElement.innerHTML = `<br>Total a pagar (incluido IVA): $${totalWithIVA.toFixed(2)}`;
+    cartTotalElement.innerHTML = `<br>Total (incluido IVA): $${totalWithIVA.toFixed(2)}`;
 }
 
 // Función para eliminar un producto del carrito
@@ -114,22 +114,59 @@ function submitCartCustomerInfo() {
     const name = document.getElementById('cart-name').value;
     const email = document.getElementById('cart-email').value;
     const address = document.getElementById('cart-address').value;
-    const phone = document.getElementById('cart-phone').value;
+    const tarjet = document.getElementById('cart-tarjet').value;
 
-    if (name && email && address && phone) {
+    if (name && email && address && tarjet) {
+        // Generar la factura en PDF con los datos del formulario
+        generateInvoicePDF(name, email, address, tarjet);
+        
         alert(`Compra confirmada. Gracias por tu compra, ${name}!`);
-
-        // Reiniciar el carrito (vaciarlo)
-        resetCart();
-
-        // Borrar los datos del formulario
-        resetCartForm();
-
-        // Cerrar la ventana del carrito
-        closeCartModal();
+        
+        clearCart();        // Vaciar el carrito
+        resetCartForm();    // Reiniciar el formulario del carrito
+        closeCartModal();   // Cerrar la ventana del carrito
     } else {
         alert('No hay productos o los campos están vacíos.');
     }
+}
+
+// Función para generar la factura en PDF
+function generateInvoicePDF(name, email, address, tarjet) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // Agregar contenido a la factura PDF
+    doc.setFontSize(18);
+    doc.text("ZonaTec", 10, 10);
+
+    doc.setFontSize(18);
+    doc.text("Factura de Compra", 10, 20);
+    
+    doc.setFontSize(12);
+    doc.text(`Nombre: ${name}`, 10, 40);
+    doc.text(`Email: ${email}`, 10, 50);
+    doc.text(`Dirección: ${address}`, 10, 60);
+    doc.text(`Número de Tarjeta: ${tarjet}`, 10, 70);
+    doc.text("Productos:", 10, 90);
+
+    let yPosition = 100;
+    let totalPrice = 0;
+
+    // Agregar cada producto del carrito a la factura
+    cart.forEach((product) => {
+        doc.text(`- ${product.name}: $${product.price.toFixed(2)}`, 10, yPosition);
+        yPosition += 10;
+        totalPrice += product.price;
+    });
+
+    const IVA_RATE = 0.16; // IVA del 16%
+    const totalWithIVA = totalPrice * (1 + IVA_RATE);
+
+    // Agregar el total a la factura
+    doc.text(`Total (incluido IVA): $${totalWithIVA.toFixed(2)}`, 10, yPosition + 20);
+
+    // Guardar el PDF con un nombre de archivo específico
+    doc.save(`Factura_${name}.pdf`);
 }
 
 function resetCart() {
@@ -152,19 +189,25 @@ function closeCartModal() {
     modal.style.display = 'none'; // Cerrar el modal del carrito
 }
 
-// Función para vaciar los campos del formulario del carrito
+// Función para vaciar el carrito
+function clearCart() {
+    cart = []; // Vaciar el array de productos
+    updateCartDisplay(); // Actualizar el carrito para reflejar los cambios
+}
+
+// Función para reiniciar el formulario del carrito
 function resetCartForm() {
     document.getElementById('cart-name').value = ''; // Limpiar nombre
     document.getElementById('cart-email').value = ''; // Limpiar email
-    document.getElementById('cart-address').value = ''; // Limpiar dirección
-    document.getElementById('cart-phone').value = ''; // Limpiar teléfono
+    document.getElementById('cart-address').value = ''; // Limpiar direccion
+    document.getElementById('cart-tarjet').value = ''; // Limpiar tarjeta
 }
 
 function submitPaymentCustomerInfo() {
-    const name = document.getElementById('payment-name').value;
-    const email = document.getElementById('payment-email').value;
-    const address = document.getElementById('payment-address').value;
-    const phone = document.getElementById('payment-phone').value;
+    const name = document.getElementById('payment-name').value; 
+    const email = document.getElementById('payment-email').value; 
+    const address = document.getElementById('payment-address').value; 
+    const phone = document.getElementById('payment-tarjet').value; 
 
     if (name && email && address && phone) {
         alert(`Compra confirmada. Gracias por tu compra, ${name}!`);
@@ -198,7 +241,7 @@ function resetPaymentForm() {
     document.getElementById('payment-name').value = ''; // Limpiar nombre
     document.getElementById('payment-email').value = ''; // Limpiar email
     document.getElementById('payment-address').value = ''; // Limpiar dirección
-    document.getElementById('payment-phone').value = ''; // Limpiar teléfono
+    document.getElementById('payment-tarjet').value = ''; // Limpiar teléfono
 }
 
 function closePaymentModal() {
